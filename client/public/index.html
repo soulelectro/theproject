@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Temporary Social - Ephemeral social networking with 5-hour sessions"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Material UI Roboto Font -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    
+    <!-- Material UI Icons -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    
+    <title>Temporary Social - 5 Hour Sessions</title>
+    
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+      
+      #root {
+        min-height: 100vh;
+      }
+      
+      /* Loading animation */
+      .loading-spinner {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border: 3px solid rgba(255,255,255,.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s ease-in-out infinite;
+      }
+      
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+      
+      /* Fade in animation */
+      .fade-in {
+        animation: fadeIn 0.5s ease-in;
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      /* Mobile optimizations */
+      @media (max-width: 768px) {
+        body {
+          font-size: 14px;
+        }
+      }
+      
+      /* PWA styles */
+      .pwa-install-banner {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #333;
+        color: white;
+        padding: 16px;
+        text-align: center;
+        z-index: 1000;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root">
+      <div style="display: flex; justify-content: center; align-items: center; height: 100vh; color: white;">
+        <div style="text-align: center;">
+          <div class="loading-spinner"></div>
+          <p style="margin-top: 20px;">Loading Temporary Social...</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
