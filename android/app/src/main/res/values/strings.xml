@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">🧠 Temporary Social</string>
+    <string name="app_description">Ephemeral social networking with 5-hour sessions</string>
+    
+    <!-- Authentication -->
+    <string name="enter_phone_number">Enter Your Phone Number</string>
+    <string name="phone_verification_desc">We\'ll send you a verification code to confirm your identity</string>
+    <string name="verify_otp">Verify OTP</string>
+    <string name="otp_verification_desc">Enter the 6-digit code sent to %s</string>
+    <string name="choose_username">Choose Username</string>
+    <string name="username_desc">Pick a unique username for your temporary profile</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_chat">Chat</string>
+    <string name="nav_feed">Feed</string>
+    <string name="nav_search">Search</string>
+    <string name="nav_payments">Pay</string>
+    <string name="nav_profile">Profile</string>
+    
+    <!-- Session -->
+    <string name="session_expires_in">Session expires in %s</string>
+    <string name="session_expired">Your session has expired</string>
+    <string name="extend_session">Extend Session</string>
+    <string name="session_warning">Your session expires in %s. Would you like to extend it?</string>
+    
+    <!-- Messages -->
+    <string name="type_message">Type a message...</string>
+    <string name="send_message">Send</string>
+    <string name="message_sent">Message sent</string>
+    <string name="messages_expire">Messages expire after 5 hours</string>
+    
+    <!-- Payments -->
+    <string name="send_money">Send Money</string>
+    <string name="amount">Amount</string>
+    <string name="upi_id">UPI ID</string>
+    <string name="payment_description">Description (optional)</string>
+    <string name="scan_qr">Scan QR Code</string>
+    <string name="generate_qr">Generate QR</string>
+    <string name="payment_success">Payment sent successfully!</string>
+    <string name="payment_failed">Payment failed. Please try again.</string>
+    
+    <!-- Feed -->
+    <string name="youtube_shorts">YouTube Shorts</string>
+    <string name="instagram_reels">Instagram Reels</string>
+    <string name="mixed_feed">Mixed Feed</string>
+    <string name="refresh_feed">Refresh Feed</string>
+    
+    <!-- Profile -->
+    <string name="edit_profile">Edit Profile</string>
+    <string name="social_links">Social Links</string>
+    <string name="add_social_link">Add Social Link</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    
+    <!-- Search -->
+    <string name="search_users">Search users...</string>
+    <string name="no_users_found">No users found</string>
+    <string name="follow">Follow</string>
+    <string name="unfollow">Unfollow</string>
+    <string name="suggested_users">Suggested Users</string>
+    
+    <!-- Common -->
+    <string name="loading">Loading...</string>
+    <string name="error">Error</string>
+    <string name="retry">Retry</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="share">Share</string>
+    <string name="copy">Copy</string>
+    
+    <!-- Permissions -->
+    <string name="permission_camera_title">Camera Permission</string>
+    <string name="permission_camera_desc">Camera access is needed to scan QR codes</string>
+    <string name="permission_sms_title">SMS Permission</string>
+    <string name="permission_sms_desc">SMS access is needed to auto-read OTP codes</string>
+    <string name="permission_storage_title">Storage Permission</string>
+    <string name="permission_storage_desc">Storage access is needed to save images</string>
+    
+    <!-- Notifications -->
+    <string name="notification_new_message">New message from %s</string>
+    <string name="notification_payment_received">Payment received: ₹%s</string>
+    <string name="notification_session_expiring">Session expires in %s</string>
+    
+    <!-- Features -->
+    <string name="feature_instant_messages">⚡ Instant Messages</string>
+    <string name="feature_upi_payments">💳 UPI Payments</string>
+    <string name="feature_social_feed">📱 Social Feed</string>
+    <string name="feature_auto_expire">🔒 Auto-Expire</string>
+    
+    <!-- Splash -->
+    <string name="splash_tagline">Ephemeral connections that matter</string>
+    <string name="splash_loading">Loading your 5-hour experience...</string>
+    
+    <!-- Terms -->
+    <string name="terms_agreement">By continuing, you agree to our Terms of Service</string>
+</resources>
