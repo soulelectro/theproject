@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { Box } from '@mui/material';
 
 // Context providers
 import { AuthProvider, useAuth } from './contexts/AuthContext';
@@ -21,45 +22,115 @@ import LoadingScreen from './components/Common/LoadingScreen';
 import SessionTimer from './components/Common/SessionTimer';
 import BottomNavigation from './components/Navigation/BottomNavigation';
 
-// Create theme
+// Create enhanced theme with better responsive design
 const theme = createTheme({
   palette: {
     primary: {
       main: '#667eea',
       light: '#9bb0ff',
       dark: '#3f51b5',
+      contrastText: '#ffffff',
     },
     secondary: {
       main: '#764ba2',
       light: '#a67cd6',
       dark: '#4a2c7a',
+      contrastText: '#ffffff',
     },
     background: {
       default: 'transparent',
       paper: 'rgba(255, 255, 255, 0.95)',
     },
+    text: {
+      primary: 'rgba(0, 0, 0, 0.87)',
+      secondary: 'rgba(0, 0, 0, 0.6)',
+    },
   },
   typography: {
     fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-    h4: {
+    h1: {
+      fontSize: '2.5rem',
+      fontWeight: 700,
+      '@media (max-width:600px)': {
+        fontSize: '2rem',
+      },
+    },
+    h2: {
+      fontSize: '2rem',
       fontWeight: 600,
+      '@media (max-width:600px)': {
+        fontSize: '1.75rem',
+      },
+    },
+    h3: {
+      fontSize: '1.75rem',
+      fontWeight: 600,
+      '@media (max-width:600px)': {
+        fontSize: '1.5rem',
+      },
+    },
+    h4: {
+      fontSize: '1.5rem',
+      fontWeight: 600,
+      '@media (max-width:600px)': {
+        fontSize: '1.25rem',
+      },
     },
     h5: {
+      fontSize: '1.25rem',
       fontWeight: 500,
     },
     h6: {
+      fontSize: '1rem',
       fontWeight: 500,
+    },
+    body1: {
+      fontSize: '1rem',
+      lineHeight: 1.6,
+      '@media (max-width:600px)': {
+        fontSize: '0.9rem',
+      },
+    },
+    body2: {
+      fontSize: '0.875rem',
+      lineHeight: 1.5,
     },
   },
   shape: {
     borderRadius: 12,
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          backgroundAttachment: 'fixed',
+          minHeight: '100vh',
+          '@media (max-width:600px)': {
+            backgroundAttachment: 'scroll',
+          },
+        },
+      },
+    },
     MuiPaper: {
       styleOverrides: {
         root: {
           backgroundImage: 'none',
           backdropFilter: 'blur(10px)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+          transition: 'all 0.3s ease',
+          '&:hover': {
+            boxShadow: '0 12px 40px rgba(0, 0, 0, 0.15)',
+          },
         },
       },
     },
@@ -69,6 +140,18 @@ const theme = createTheme({
           textTransform: 'none',
           borderRadius: 8,
           fontWeight: 500,
+          padding: '8px 24px',
+          transition: 'all 0.2s ease',
+          '&:hover': {
+            transform: 'translateY(-1px)',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+          },
+        },
+        contained: {
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          '&:hover': {
+            background: 'linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%)',
+          },
         },
       },
     },
@@ -77,20 +160,57 @@ const theme = createTheme({
         root: {
           '& .MuiOutlinedInput-root': {
             borderRadius: 8,
+            transition: 'all 0.2s ease',
+            '&:hover': {
+              transform: 'translateY(-1px)',
+            },
+            '&.Mui-focused': {
+              transform: 'translateY(-1px)',
+              boxShadow: '0 4px 12px rgba(102, 126, 234, 0.3)',
+            },
           },
+        },
+      },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: 16,
+          transition: 'all 0.3s ease',
+          '&:hover': {
+            transform: 'translateY(-4px)',
+            boxShadow: '0 12px 40px rgba(0, 0, 0, 0.15)',
+          },
+        },
+      },
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          borderRadius: 16,
+          fontWeight: 500,
+        },
+      },
+    },
+    MuiBottomNavigation: {
+      styleOverrides: {
+        root: {
+          borderRadius: '16px 16px 0 0',
+          overflow: 'hidden',
         },
       },
     },
   },
 });
 
-// Create query client
+// Create query client with better defaults
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
       retry: 1,
       staleTime: 5 * 60 * 1000, // 5 minutes
+      cacheTime: 10 * 60 * 1000, // 10 minutes
     },
   },
 });
@@ -125,18 +245,50 @@ function PublicRoute({ children }) {
   return children;
 }
 
-// Main App Layout
+// Enhanced App Layout with responsive design
 function AppLayout({ children }) {
   const { user } = useAuth();
 
   return (
-    <div className="app-layout">
+    <Box
+      sx={{
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        backgroundAttachment: { xs: 'scroll', md: 'fixed' },
+      }}
+    >
       {user && <SessionTimer />}
-      <main className="main-content">
+      
+      <Box
+        component="main"
+        sx={{
+          flex: 1,
+          pb: user ? { xs: 8, sm: 0 } : 0, // Add padding for bottom nav on mobile
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
         {children}
-      </main>
-      {user && <BottomNavigation />}
-    </div>
+      </Box>
+      
+      {user && (
+        <Box
+          sx={{
+            display: { xs: 'block', sm: 'block' },
+            position: 'fixed',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            zIndex: 1000,
+          }}
+        >
+          <BottomNavigation />
+        </Box>
+      )}
+    </Box>
   );
 }
 
